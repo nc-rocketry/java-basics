@@ -31,8 +31,8 @@ floor
 
 
 # Challenge
-Write an application to simulate an building and elevator system as 
-described by the above requirements to determine the following:
+Write an application to simulate a building and elevator system as 
+described by the above to determine the following:
 - maximum wait time for a visitor in the lobby to find
   an available elevator car that can take them to their requested
   destination floor
