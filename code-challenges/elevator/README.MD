@@ -1,6 +1,6 @@
 # Elevator Code Challenge
 
-Express through diagrams, pseudo code, or actual code to produce
+Express through diagrams, pseudo code, or actual code, 
 a solution that will meet the functional requirements below.
 
 ## Scenario:
