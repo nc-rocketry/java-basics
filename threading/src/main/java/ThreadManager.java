@@ -4,18 +4,25 @@ public class ThreadManager {
 
     private ArrayList<Summation> workers= new ArrayList<Summation>();
     private ArrayList<Thread> threads= new ArrayList<Thread>();
+    private final int nWorkers= 10;
 
-    public ThreadManager(int nWorkers) {
+    public ThreadManager(int[] work) {
 
         // TODO: split the work into slices, hand slices to the threads
-        int[] slice= new int[] {1,2,3,4,5,6,7,8,9,10};
 
-        int chunkSize= 50;
+        int chunkSize= work.length / nWorkers;
         int offset= 0;
 
         for (int i= 0; i < nWorkers; i++) {
-            //int[] slice= new int[chunkSize];
-            //System.arraycopy(work, offset, slice, 0, chunkSize);
+            int[] slice= new int[chunkSize];
+
+            if (work.length - offset < chunkSize) {
+                chunkSize= work.length - offset;
+                slice= new int[work.length - offset];
+
+            }
+
+            System.arraycopy(work, offset, slice, 0, chunkSize);
             workers.add(new Summation(slice));
             Thread thread= new Thread(workers.get(workers.size() - 1));
             threads.add(thread);
