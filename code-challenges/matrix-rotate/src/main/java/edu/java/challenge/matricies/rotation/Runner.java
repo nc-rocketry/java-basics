@@ -15,11 +15,18 @@ public class Runner {
 			    { " 3", " V", " 4" }, 
 			});
 		
+		Matrix<String> m2= new Matrix<>(
+			new String[][] {
+			    { " 1 ", "   ", "   ", " - ", " 0 " }, 
+			    { "   ", " 1 ", "   ", " - ", " 0 " }, 
+			    { "   ", "   ", " 0 ", " - ", " 0 " }, 
+			    { "   ", "   ", "   ", " - ", " 0 " }, 
+			    { "   ", "   ", "   ", " - ", " 0 " }, 
+			});
+		
 		System.out.println(m1.toString());
 		
-		Matrix<String> m2= m1.apply(v -> v.value.charAt(0) < 'a' ? v.value.toLowerCase() : v.value.toUpperCase());
-
-		Matrix<String> m3= m1.copy();
+		Matrix<String> m3= m2.copy();
 		Matrix<String> m4= m1.apply(v -> m1.get(v.col, v.row));
 		
 		System.out.println("m3:\n"+ m3);
