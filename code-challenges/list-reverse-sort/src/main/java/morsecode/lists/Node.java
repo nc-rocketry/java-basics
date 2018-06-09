@@ -9,8 +9,13 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         this.data= data;
     }
 
-    public T get() {
-        return data;
+    public T get() { return data; }
+    public Node<T> next() { return next; }
+    public boolean hasNext() { return next != null; }
+
+    public boolean contains(T value) {
+        if (this.data.compareTo(value) == 0) { return true; }
+        return next == null ? false : next.contains(value);
     }
 
     public T get(int index) {
@@ -25,7 +30,6 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         return next.get(index - 1);
     }
 
-
     public Node<T> add(T data) {
         if (next == null) {
             return next= new Node<T>(data);
@@ -36,7 +40,7 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
 
     public int compareTo(Node<T> node) {
         if (node == null) { return -1; }
-        return this.compareTo(node);
+        return this.data.compareTo(node.data);
     }
 
     public Node<T> sort() {
@@ -90,13 +94,6 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         return (next == null ? this : next.tail());
     }
 
-    public Node<T> next() { return next; }
-    public boolean hasNext() { return next != null; }
-
-    public boolean contains(T value) {
-        if (this.data.compareTo(value) == 0) { return true; }
-        return next == null ? false : next.contains(value);
-    }
 
     public String toString() {
 
