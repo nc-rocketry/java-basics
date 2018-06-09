@@ -1,6 +1,6 @@
 package morsecode.lists;
 
-public class Node<T extends Comparable<T>> {
+public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
 
     private Node<T> next;
     final private T data;
@@ -36,7 +36,7 @@ public class Node<T extends Comparable<T>> {
 
     public int compareTo(Node<T> node) {
         if (node == null) { return -1; }
-        return this.data.compareTo(node.data);
+        return this.compareTo(node);
     }
 
     public Node<T> sort() {
@@ -94,7 +94,7 @@ public class Node<T extends Comparable<T>> {
     public boolean hasNext() { return next != null; }
 
     public boolean contains(T value) {
-        if (data.compareTo(value) == 0) { return true; }
+        if (this.data.compareTo(value) == 0) { return true; }
         return next == null ? false : next.contains(value);
     }
 
