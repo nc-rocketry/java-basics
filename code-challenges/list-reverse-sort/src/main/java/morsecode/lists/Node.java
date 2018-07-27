@@ -3,15 +3,24 @@ package morsecode.lists;
 public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
 
     private Node<T> next;
-    final private T data;
+    private final T data;
 
     public Node(T data) {
         this.data= data;
+        this.next= null;
+    }
+
+    protected Node(T data, Node<T> next) {
+        this.data= data;
+        this.next= next;
     }
 
     public T get() { return data; }
     public Node<T> next() { return next; }
     public boolean hasNext() { return next != null; }
+    public Node<T> tail() {
+        return (next == null ? this : next.tail());
+    }
 
     public boolean contains(T value) {
         if (this.data.compareTo(value) == 0) { return true; }
@@ -32,7 +41,7 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
 
     public Node<T> add(T data) {
         if (next == null) {
-            return next= new Node<T>(data);
+            return next= new Node<>(data);
         } else {
             return next.add(data);
         }
@@ -59,8 +68,7 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         }
 
         if (this.compareTo(ptr) < 0) {
-            Node<T> newHead= new Node<>(data);
-            newHead.next= ptr;
+            Node<T> newHead= new Node<>(data, ptr);
             sorted= newHead;
         } else {
             ptr.insert(data);
@@ -74,12 +82,10 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
     }
 
     private Node<T> insert(T data) {
-        Node<T> node= new Node<>(data);
-        node.next= next;
+        Node<T> node= new Node<>(data, next);
         this.next= node;
         return node;
     }
-
 
     public Node<T> reverse() {
         if (next != null) {
@@ -90,22 +96,13 @@ public class Node<T extends Comparable<T>> implements Comparable<Node<T>> {
         return new Node<>(data);
     }
 
-    public Node<T> tail() {
-        return (next == null ? this : next.tail());
-    }
-
-
     public String toString() {
-
         StringBuilder sb= new StringBuilder();
         sb.append(data);
-
         if (next != null) {
-            sb.append(",");
-            sb.append(next.toString());
+            sb.append(","+ next);
         }
         return sb.toString();
     }
-
 
 }

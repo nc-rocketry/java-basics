@@ -1,18 +1,22 @@
 package morsecode.lists;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
-public class NodeList<T extends Comparable<T>> implements Iterable<T> {
+public class NodeList<T extends Comparable<T>> implements Iterable<T>, Comparable<NodeList<T>> {
 
     private Node<T> head;
     private Node<T> tail;
 
-    public NodeList() {
+    public NodeList() { }
+    public NodeList(T[] array) {
+        Arrays.stream(array).forEach(e -> this.add(e));
     }
 
     protected NodeList(Node<T> head) {
         this.head= head;
         this.tail= head.tail();
+        Node<T> ptr= head;
     }
 
     public NodeList<T> add(T value) {
@@ -64,5 +68,25 @@ public class NodeList<T extends Comparable<T>> implements Iterable<T> {
         };
     }
 
+    @Override
+    public int compareTo(NodeList<T> o) {
+        int i= 0;
+        for (T a : this) {
+            try {
+                int diff = a.compareTo(o.get(i++));
+                if (diff != 0) {
+                    return diff;
+                }
+            } catch (IndexOutOfBoundsException inequal) {
+                return 1;
+            }
+        }
+        try {
+            o.get(i+1);
+            return -1;
+        } catch (IndexOutOfBoundsException ignore) {
+            return 0;
+        }
+    }
 }
 

@@ -17,31 +17,12 @@
     </parent>
 
     <modules>
-        <module>style-guides</module>
-        <module>files</module>
-        <module>scopes</module>
-        <module>packages</module>
-        <module>interfaces</module>
-        <module>inheritance</module>
-        <module>composition</module>
-        <module>pojos</module>
-        <module>objects</module>
-        <module>polymorphism</module>
         <module>threading</module>
-        <module>commandline</module>
-        <module>spring</module>
-        <module>spring-boot</module>
-        <module>inversion-of-control</module>
-        <module>older-versions</module>
-        <module>collections</module>
-        <module>recursion</module>
-        <module>serialization</module>
-        <module>what-not-to-do</module>
-        <module>coding-challenges</module>
         <module>jvm-options</module>
         <module>sockets</module>
         <module>threading</module>
         <module>code-challenges</module>
+        <module>fun</module>
     </modules>
 
     <properties>

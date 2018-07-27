@@ -107,4 +107,30 @@ public class NodeTest {
         Assert.assertFalse(empty.isEmpty());
     }
 
+
+    @Test
+    public void testCompareEqual() {
+        NodeList<Integer> list1= new NodeList<>(new Integer[] {10, 120});
+        NodeList<Integer> list2= new NodeList<>(new Integer[] {10, 120});
+        Assert.assertEquals(list1 + " == "+ list2, 0, list1.compareTo(list2));
+    }
+
+    @Test
+    public void testCompareLessthan() {
+        NodeList<Integer> list1= new NodeList<>(new Integer[] {10, 119});
+        NodeList<Integer> list2= new NodeList<>(new Integer[] {10, 120});
+        Assert.assertEquals(-1, list1.compareTo(list2));
+
+        list1= new NodeList<>(new Integer[] {10, 12});
+        list2= new NodeList<>(new Integer[] {10, 12, 11});
+        Assert.assertEquals(list1 +" < "+ list2, -1, list1.compareTo(list2));
+    }
+
+    @Test
+    public void testCompareGreaterthan() {
+        NodeList<Integer> list1= new NodeList<>(new Integer[] {10, 121});
+        NodeList<Integer> list2= new NodeList<>(new Integer[] {10, 120});
+        Assert.assertEquals(list1 +" > "+ list2, 1, list1.compareTo(list2));
+    }
+
 }

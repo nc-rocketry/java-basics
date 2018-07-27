@@ -10,6 +10,8 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>airport</module>
+        <module>algorithms</module>
+        <module>list-reverse-sort</module>
     </modules>
 
 
