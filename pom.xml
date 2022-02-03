@@ -22,7 +22,6 @@
         <module>sockets</module>
         <module>threading</module>
         <module>code-challenges</module>
-        <module>fun</module>
         <module>hackerrank</module>
     </modules>
 
